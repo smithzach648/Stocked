@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #f2f3ec;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    /* Keep content clear of notches and home indicators on installed PWAs */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) 0
+      env(safe-area-inset-left);
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid #3d5a36;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Signature element: each category group sits on a "shelf" —
+     a thick edge with a subtle wood-tone gradient beneath the items. */
+  .shelf-edge {
+    height: 7px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #8a6b47 0%, #6f5437 60%, #5c452d 100%);
+    box-shadow: 0 2px 3px rgba(34, 48, 31, 0.18);
+  }
+
+  .shelf-label {
+    @apply inline-block bg-moss text-paper font-display text-sm font-semibold tracking-wide rounded-t-md px-3 py-1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
